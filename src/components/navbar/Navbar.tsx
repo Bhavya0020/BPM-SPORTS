@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Logo from "@/app/favicon.ico";
 import { BsCart4 } from "react-icons/bs";
+import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Navbar = () => {
     return ( 
       <div className="navbar bg-secondary">
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">
+        <div className="flex-1 gap-4">
+          <a className="btn btn-ghost text-xl" href="/">
             <Image
                 src={Logo}
                 alt="Logo of BPM Sports"
@@ -14,12 +15,18 @@ const Navbar = () => {
                 height={50}
             />
           </a>
-        </div>
-        <div className="flex-none gap-2">
           <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+            <input type="text" placeholder="Search" className="input input-bordered w-48 md:w-96" />
           </div>
-          <div className="dropdown dropdown-end">
+        </div>
+        <div className="flex-none gap-4">
+          <a href="/sign-in">
+            <div className="flex hover:bg-primary p-1 rounded">
+                < IoPersonCircleOutline size={40} className="text-white"/>
+                <span className="text-2xl pt-1 pl-2 text-white">Login</span>
+            </div>
+          </a>
+          {/* <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 <img
@@ -39,11 +46,11 @@ const Navbar = () => {
               <li><a>Settings</a></li>
               <li><a>Logout</a></li>
             </ul>
-          </div>
+          </div> */}
           <a href="/cart">
-            <div className="flex">
+            <div className="flex hover:bg-primary p-1 rounded">
                 < BsCart4 size={40} className="text-white"/>
-                <span className="text-2xl pt-2 pl-2">Cart</span>
+                <span className="text-2xl pt-1 pl-2 text-white">Cart</span>
             </div>
           </a>
         </div>
