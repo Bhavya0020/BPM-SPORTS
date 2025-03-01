@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Logo from "@/app/favicon.ico";
+import { BsCart4 } from "react-icons/bs";
+
 const Navbar = () => {
     return ( 
       <div className="navbar bg-secondary">
@@ -38,6 +40,11 @@ const Navbar = () => {
               <li><a>Logout</a></li>
             </ul>
           </div>
+          <a href="/cart">
+            <div>
+                < BsCart4 size={40} className="text-white"/>
+            </div>
+          </a>
         </div>
       </div>
      );

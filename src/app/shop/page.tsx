@@ -1,5 +1,6 @@
 import Cards from "@/components/Cards";
-
+import Breadcrum from "@/components/Breadcrum";
+import Container from "@/components/Container";
 // Sample data array
 const products = [
   {
@@ -102,16 +103,24 @@ const products = [
 
 const Catalogue = () => {
   return (
-    <div className="grid grid-cols-3 gap-4 p-4 space-y-2">
-      {products.map((product) => (
-        <Cards
-          key={product.id}
-          image={product.image}
-          title={product.title}
-          description={product.description}
-        />
-      ))}
-    </div>
+    <>
+     <Container>
+     <Breadcrum />
+     <p className="py-3">
+        The all new Samsung Galaxy Buds Pro earphones will be launching on Jan 28th. Grab the best deal with Flipkart offers.
+      </p>
+        <div className="grid grid-cols-3 gap-4 py-6 space-y-2">
+          {products.map((product) => (
+            <Cards
+              key={product.id}
+              image={product.image}
+              title={product.title}
+              description={product.description}
+            />
+          ))}
+        </div>
+      </Container>
+    </>
   );
 };
 
