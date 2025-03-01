@@ -41,8 +41,9 @@ const Navbar = () => {
             </ul>
           </div>
           <a href="/cart">
-            <div>
+            <div className="flex">
                 < BsCart4 size={40} className="text-white"/>
+                <span className="text-2xl pt-2 pl-2">Cart</span>
             </div>
           </a>
         </div>
