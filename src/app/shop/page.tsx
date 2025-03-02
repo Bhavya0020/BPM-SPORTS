@@ -1,5 +1,7 @@
 import Cards from "@/components/Cards";
+import Sidebar from "@/components/Sidebar";
 import Breadcrum from "@/components/Breadcrum";
+import Tabs from "@/components/Tab";
 import Container from "@/components/Container";
 // Sample data array
 const products = [
@@ -104,22 +106,34 @@ const products = [
 const Catalogue = () => {
   return (
     <>
-     <Container>
-     <Breadcrum />
-     <p className="py-3">
-        The all new Samsung Galaxy Buds Pro earphones will be launching on Jan 28th. Grab the best deal with Flipkart offers.
-      </p>
-        <div className="grid grid-cols-3 gap-4 py-6 space-y-2">
-          {products.map((product) => (
-            <Cards
-              key={product.id}
-              image={product.image}
-              title={product.title}
-              description={product.description}
-            />
-          ))}
+      <Sidebar>
+      {/* <Container> */}
+      <div className="p-3">
+        <Breadcrum />
+        <p className="py-3">
+          The all new Samsung Galaxy Buds Pro earphones will be launching on Jan 28th. Grab the best deal with Flipkart offers.
+        </p>
+        <p className="py-3">
+          Also check: Skullcandy Wireless, Skullcandy Smokin Buds 2, JBL Headset, Jabra Headphones, Samsung Level U, Sony Extra Base Headphones
+        </p>
+          <p className="text-xl font-bold">
+            Headset
+            <span className="text-base text-gray-400 font-normal pl-2">(Showing 1 – 40 products of 13,261 products)</span>
+          </p>
+          <Tabs />
+            <div className="grid grid-cols-3 gap-2 py-6 space-y-2">
+              {products.map((product) => (
+                <Cards
+                  key={product.id}
+                  image={product.image}
+                  title={product.title}
+                  description={product.description}
+                />
+              ))}
+          </div>
         </div>
-      </Container>
+      {/* </Container> */}
+      </Sidebar>
     </>
   );
 };

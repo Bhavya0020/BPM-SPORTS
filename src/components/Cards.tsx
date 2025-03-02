@@ -8,7 +8,7 @@ interface CardsProps {
 
 const Cards: React.FC<CardsProps> = ({ image, title, description }) => {
   return (
-    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+    <div className="card card-compact bg-white w-72 shadow-lg">
       <figure>
         <img src={image} alt={title} />
       </figure>
