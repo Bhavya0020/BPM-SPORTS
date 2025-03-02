@@ -2,7 +2,6 @@ import Cards from "@/components/Cards";
 import Sidebar from "@/components/Sidebar";
 import Breadcrum from "@/components/Breadcrum";
 import Tabs from "@/components/Tab";
-import Container from "@/components/Container";
 // Sample data array
 const products = [
   {
