@@ -2,10 +2,12 @@ import Image from "next/image";
 import Logo from "@/app/favicon.ico";
 import { BsCart4 } from "react-icons/bs";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { BsSearch } from "react-icons/bs";
+
 import Link from "next/link";
 const Navbar = () => {
     return ( 
-      <div className="navbar bg-secondary">
+      <div className="navbar bg-secondary px-4">
         <div className="flex-1 gap-4">
           <Link className="btn btn-ghost text-xl" href="/">
             <Image
@@ -15,10 +17,17 @@ const Navbar = () => {
                 height={50}
             />
           </Link>
-          <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered w-48 md:w-96" />
+          <div className="relative"> {/* relative positioning for icon */}
+              <input
+                type="text"
+                placeholder="Search"
+                className="input input-bordered w-48 md:w-96 rounded-full pl-10" // Add padding to make space for the icon
+              />
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
+                <BsSearch />
+              </div>
+            </div>
           </div>
-        </div>
         <div className="flex-none gap-4">
           <Link href="/sign-in">
             <div className="flex hover:bg-primary p-1 rounded">

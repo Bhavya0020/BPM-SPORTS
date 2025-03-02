@@ -14,11 +14,11 @@ interface FeaturedCardsProps {
 
 const FeaturedCards = ({ cards }: FeaturedCardsProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
       {cards.map((card, index) => (
         <div key={index} className="card bg-base-100 shadow-sm">
           <figure>
-            <img src={card.image} alt={card.title} className="w-full h-48 object-cover" />
+            <img src={card.image} alt={card.title} className="w-full h-64 object-cover bg-white" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">
