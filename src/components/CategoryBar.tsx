@@ -13,7 +13,7 @@ const CategoryBar = () => {
   return (
     <div className="flex flex-wrap justify-left gap-2 my-6">
       {images.map((item, index) => (
-        <Link href={`/${item.caption}`}>
+        <Link href={`/${item.caption}`} key={index}>
             <div key={index} className="flex flex-col items-center">
             <img src={item.src} alt={item.caption} className="rounded-lg shadow-md h-32 w-48" />
             <p className="mt-2 text-sm text-gray-700">{item.caption}</p>
