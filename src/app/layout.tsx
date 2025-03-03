@@ -3,6 +3,12 @@ import { Inter } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer"; 
+import Loading from "@/app/loading";
+import {
+  ClerkProvider,
+  ClerkLoading,
+  ClerkLoaded
+} from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,14 +23,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} bg-bg`}
-      >
+    // <html lang="en">
+    //   <body
+    //     className={`${inter.className} bg-bg`}
+    //   >
+    //     <Navbar />
+    //       {children}
+    //     <Footer />
+    //   </body>
+    // </html>
+    <ClerkProvider
+    appearance={{
+      layout: {
+        unsafe_disableDevelopmentModeWarnings: true,
+      },
+      elements: {
+        footer: "hidden",
+      },
+    
+    }}
+  >
+  <html lang="en">
+    <body
+      className={`${inter.className} bg-bg`}
+    >
+      <div>
         <Navbar />
-          {children}
+        <ClerkLoading>
+        <Loading />
+        </ClerkLoading>
+        <ClerkLoaded>
+            {children}
+        </ClerkLoaded>
         <Footer />
-      </body>
-    </html>
+      </div>
+    </body>
+  </html>
+  </ClerkProvider>
   );
 }

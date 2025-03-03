@@ -2,7 +2,7 @@ import Carousel from "@/components/Carousel";
 import Container from "@/components/Container";
 import FeaturedCards from "@/components/FeaturedCards";
 import CategoryBar from "@/components/CategoryBar";
-
+import TrendingSearch from "@/components/TrendingSearch";
 export default function Home() {
   const featuredCards = [
     {
@@ -30,10 +30,12 @@ export default function Home() {
     <div>
       <Carousel />
       <Container>
-      <h2 className="text-3xl text-primary font-bold text-left ">Shop Trending Collections</h2>
-      <CategoryBar />
+        <h2 className="text-3xl text-primary font-bold text-left ">Shop Trending Collections</h2>
+        <CategoryBar />
         <h2 className="text-3xl text-primary font-bold text-left">Trending Products</h2>
         <FeaturedCards cards={featuredCards} /> {/* Pass the array of cards */}
+        <h3 className="text-xl text-primary font-bold text-left">Trending Search</h3>
+        <TrendingSearch />
       </Container>
     </div>
   );

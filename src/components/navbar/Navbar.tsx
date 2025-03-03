@@ -3,6 +3,11 @@ import Logo from "@/app/favicon.ico";
 import { BsCart4 } from "react-icons/bs";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 import Link from "next/link";
 const Navbar = () => {
@@ -29,12 +34,25 @@ const Navbar = () => {
             </div>
           </div>
         <div className="flex-none gap-4">
+          <SignedOut>
           <Link href="/sign-in">
-            <div className="flex hover:bg-primary p-1 rounded">
-                < IoPersonCircleOutline size={40} className="text-white"/>
-                <span className="text-2xl pt-1 pl-2 text-white">Login</span>
-            </div>
-          </Link>
+              <div className="flex hover:bg-primary p-1 rounded">
+                  < IoPersonCircleOutline size={40} className="text-white"/>
+                  <span className="text-2xl pt-1 pl-2 text-white">Login</span>
+              </div>
+            </Link>
+        </SignedOut>
+        <SignedIn>
+          <div className="navbar-end gap-3 ">
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10", 
+                },
+              }}
+            />
+          </div>
+        </SignedIn>
           {/* <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
