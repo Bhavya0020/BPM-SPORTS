@@ -18,7 +18,7 @@ const FeaturedCards = ({ cards }: FeaturedCardsProps) => {
       {cards.map((card, index) => (
         <div key={index} className="card bg-base-100 shadow-sm">
           <figure>
-            <img src={card.image} alt={card.title} className="w-full h-64 object-cover bg-white" />
+            <img src={card.image} alt={card.title} className="w-full h-64 object-cover" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">

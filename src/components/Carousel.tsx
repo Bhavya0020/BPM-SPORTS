@@ -1,44 +1,48 @@
+"use client"
+
+import React, { useState } from 'react';
+
 const Carousel = () => {
-    return ( 
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const slides = [
+        {
+            id: 'slide1',
+            src: 'https://cdn2.bigcommerce.com/server1500/896ef/products/51/images/171/salebanner__97391.1296011434.1280.1280.jpg?c=2',
+        },
+        {
+            id: 'slide2',
+            src: 'https://i.ebayimg.com/00/s/NjAxWDE2MDA=/z/ZZQAAOSwvgVjV5BM/$_57.JPG?set_id=880000500F',
+        },
+    ];
+
+    const goToPreviousSlide = () => {
+        setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    };
+
+    const goToNextSlide = () => {
+        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    };
+
+    return (
         <div className="carousel w-full my-7">
-            <div id="slide1" className="carousel-item relative w-full">
+            <div id={slides[currentSlide].id} className="carousel-item relative w-full">
                 <img
-                src="https://images.pexels.com/photos/7956390/pexels-photo-7956390.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                className="w-full h-64" />
+                    src={slides[currentSlide].src}
+                    className="w-full h-64"
+                    alt={`Slide ${currentSlide + 1}`}
+                />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href="#slide4" className="btn btn-circle">❮</a>
-                <a href="#slide2" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide2" className="carousel-item relative w-full">
-                <img
-                src="https://images.pexels.com/photos/7563677/pexels-photo-7563677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                className="w-full h-64" />
-                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href="#slide1" className="btn btn-circle">❮</a>
-                <a href="#slide3" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide3" className="carousel-item relative w-full">
-                <img
-                src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-                className="w-full h-64" />
-                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href="#slide2" className="btn btn-circle">❮</a>
-                <a href="#slide4" className="btn btn-circle">❯</a>
-                </div>
-            </div>
-            <div id="slide4" className="carousel-item relative w-full">
-                <img
-                src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-                className="w-full h-64" />
-                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                <a href="#slide3" className="btn btn-circle">❮</a>
-                <a href="#slide1" className="btn btn-circle">❯</a>
+                    <button onClick={goToPreviousSlide} className="btn btn-circle">
+                        ❮
+                    </button>
+                    <button onClick={goToNextSlide} className="btn btn-circle">
+                        ❯
+                    </button>
                 </div>
             </div>
         </div>
-     );
-}
- 
-export default Carousel
+    );
+};
+
+export default Carousel;
