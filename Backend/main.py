@@ -5,26 +5,17 @@ from starlette.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 import uvicorn
 import os
-connection_str = 'mongodb+srv://bhavyalearncode:LearnCode%402023@ecommercedb.jmthh.mongodb.net/ECommerceDB?retryWrites=true&w=majority'
+from utils import get_shop_records
+
 app = FastAPI()
 # Allow frontend (Next.js) to communicate with backend (FastAPI)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Adjust based on your frontend URL
+    allow_origins=["*"],  # Adjust based on your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# try:
-#     client = MongoClient(connection_str)
-#     db = client['ECommerceDB']
-#     res = db['Product'].find()
-#     for i in res:
-#         print(i)
-#     print(f"This work!!")
-#     client.close()
-# except:
-#     print("Error connecting DB")
 
 @app.get("/")
 def read_root():
@@ -33,18 +24,14 @@ def read_root():
 @app.get("/shop")
 def read_root():
     try:
-        client = MongoClient(connection_str)
-        db = client['ECommerceDB']
-        res = db['Product'].find()
-        data = []
-        for i in res:
-            print(i)
-            data.append(i)
-        print(f"This work!!")
-        client.close()
-        return JSONResponse(jsonable_encoder(data))
+        data = get_shop_records()
+        return data
+        # return JSONResponse(jsonable_encoder(data))
+    # except Exception as e:
+        # return "Error connecting DB"
     except Exception as e:
-        return "Error connecting DB"
+        print(e)
+        raise HTTPException(status_code=500, detail=str(e))
     
 
 uvicorn.run(app, port=8000, host="0.0.0.0")
