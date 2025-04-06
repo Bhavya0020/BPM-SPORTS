@@ -1,19 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pymongo import MongoClient
-from starlette.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
 import uvicorn
-import os
 
 from models import ProductModel, CategoryModel, UserModel
 from repositories import product_repository, category_repository, user_repository
 
 app = FastAPI()
-# Allow frontend (Next.js) to communicate with backend (FastAPI)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust based on your frontend URL
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

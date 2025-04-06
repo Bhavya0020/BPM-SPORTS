@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 import Carousel from "@/components/Carousel";
 import Container from "@/components/Container";
 import FeaturedCards from "@/components/FeaturedCards";
 import CategoryBar from "@/components/CategoryBar";
 import TrendingSearch from "@/components/TrendingSearch";
+
 export default function Home() {
   const featuredCards = [
     {
@@ -30,6 +33,9 @@ export default function Home() {
     <div>
       <Carousel />
       <Container>
+      <Link href="/shop" className="btn btn-warning mb-4">
+        Go to Shop
+      </Link>
         <h2 className="text-3xl text-primary font-bold text-left ">Shop Trending Collections</h2>
         <CategoryBar />
         <h2 className="text-3xl text-primary font-bold text-left">Trending Products</h2>
